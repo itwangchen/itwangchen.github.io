@@ -465,6 +465,7 @@ document.getElementById('generate').addEventListener('click', function () {
         document.getElementById('comment').style.display = 'block';
         for (var i = 0; i < commentList.length; i++) {
             var avatarUsedIndex = Math.floor(Math.random() * (avatarURL.length-1));
+            debugger
             var avatar = avatarSource[avatarUsedIndex];
             var comment = commentList[i];
             document.getElementById('commentList').innerHTML += ''
