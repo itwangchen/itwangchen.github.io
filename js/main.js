@@ -464,8 +464,9 @@ document.getElementById('generate').addEventListener('click', function () {
     if (document.getElementById('configShowComment').checked && commentList.length) {
         document.getElementById('comment').style.display = 'block';
         for (var i = 0; i < commentList.length; i++) {
-            var avatarUsedIndex = Math.floor(Math.random() * (avatarURL.length-1));
-            debugger
+            var avatarUsedIndex = Math.floor(Math.random() * (avatarSource.length-1));
+            console.log(avatarUsedIndex,avatarSource,'-----');
+            
             var avatar = avatarSource[avatarUsedIndex];
             var comment = commentList[i];
             document.getElementById('commentList').innerHTML += ''
