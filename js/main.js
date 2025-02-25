@@ -133,11 +133,10 @@ function copyGitLink() {
 
 var commentList = [];
 var names = [
-  "碧波", "霜华", "烟雨", "星河", "风华", "幽兰", "霜雪", "墨痕", "翠竹", "残阳",
-  "晚霞", "流萤", "霜月", "晴空", "夜雨", "山岚", "潮汐", "冰霜", "朝露", "孤星",
-  "寒夜", "春桃", "夏荷", "冬梅", "雷音", "电光", "烈焰", "霜刃", "风吟", "云鹤",
-  "霓虹", "竹影", "松涛", "梅影"
-];
+    "雾霭", "溪流", "虹彩", "霜叶", "雪松", "月华", "梦蝶", "紫霄", "金风", "玉露",
+    "枫火", "荷风", "兰香", "菊影", "梅骨", "竹韵", "茶烟", "桂雨", "松月", "柏霜",
+    "云龙", "烟鹤", "霞光", "霓裳", "霜钟", "雾笛", "雷鸣", "电舞", "风絮", "水澜"
+  ];
 //['海绵抱抱', '玛卡巴卡', '苏卡布', '啪嗒星', '小透明', '大魔王', '小手冰凉'];
 //加入点赞头像
 //添加评论
@@ -465,7 +464,7 @@ document.getElementById('generate').addEventListener('click', function () {
     if (document.getElementById('configShowComment').checked && commentList.length) {
         document.getElementById('comment').style.display = 'block';
         for (var i = 0; i < commentList.length; i++) {
-            var avatarUsedIndex = Math.floor(Math.random() * 30);
+            var avatarUsedIndex = Math.floor(Math.random() * (avatarURL.length-1));
             var avatar = avatarSource[avatarUsedIndex];
             var comment = commentList[i];
             document.getElementById('commentList').innerHTML += ''
