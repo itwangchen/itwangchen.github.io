@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <title>跳转微信</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css" media="all">
+    
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // 从 URL 参数中获取t
+            const t = urlParams.get("t");
+            //		alert('weixin://dl/business/?t='+t);
+            location.href = 'weixin://dl/business/?t='+t;
+        }
+
+</script>
+</head>
+<body>
+   
+</body>
+</html>

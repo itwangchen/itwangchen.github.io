@@ -1,0 +1,257 @@
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>扫码</title>
+    <link href="//cdn.staticfile.org/layui/2.9.7/css/layui.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+        }
+        button {
+            display: block;
+            width: 80vw;
+            margin: 0 auto;
+            outline: none;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            margin-top: 5vw;
+            font-size: 16px;
+            text-align: center;
+            background: #00A278;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #upload-input {
+            opacity: 0;
+            filter: alpha(opacity=0);
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #upload-text {
+            position: relative;
+            bottom: 40px;
+            user-select: none;
+        }
+        #reader {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+        #reader-warp {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+        }
+        .stop-camera {
+            position: absolute;
+            left: 10vw;
+            bottom: 10vw;
+        }
+        #qr-reader-results {
+            padding: 10vw;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 相机、文件方式同时只能使用一个,可根据自己需求修改,如:1.改成下拉框;2.改成tab;3.改成radio等等控制显示隐藏和相应逻辑 -->
+    <button id="camera-button"  lay-on="useCamera" style="margin-top:20vw;"><i class="layui-icon layui-icon-camera-fill"></i> 使用相机扫一扫</button>
+    <button lay-on="useLocal">
+        <input type="file" id="upload-input" accept="image/*" value="使用文件方式">
+        <span id="upload-text"><i class="layui-icon layui-icon-picture"></i> 选择图片识别</span>
+    </button>
+    
+    <div id="reader-warp">
+        <div id="reader"></div>
+        <button class="stop-camera" lay-on="stopCamera"><i class="layui-icon layui-icon-error"></i> 停止扫码</button>
+    </div>
+    <h3 id="qr-reader-results"></h3>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+    <script src="//cdn.staticfile.org/layui/2.9.7/layui.js"></script>
+    <script>
+        layui.use(function(){
+            var layer = layui.layer;
+            var util = layui.util;
+           
+            //方式一使用库的ui
+            // var resultContainer = document.getElementById('qr-reader-results');
+            // var lastResult, countResults = 0;
+    
+            // function onScanSuccess(decodedText, decodedResult) {
+            //     if (decodedText !== lastResult) {
+            //         ++countResults;
+            //         lastResult = decodedText;
+            //         document.getElementById('qr-reader-results').innerText = lastResult;
+            //         // Handle on success condition with the decoded message.
+            //         console.log(`Scan result ${decodedText}`, decodedResult);
+            //     }
+            // }
+    
+            // var html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 300 });
+            // html5QrcodeScanner.render(onScanSuccess);
+            // var resultContainer = document.getElementById('qr-reader-results');
+            // var lastResult, countResults = 0;
+    
+    
+            //1.Html5QrcodeScanner是js提供的ui; 2.Html5Qrcode是自定义面板
+            let html5QrCode = new Html5Qrcode("reader"); 
+            let reader = document.getElementById("reader");
+            let readerWarp = document.getElementById("reader-warp");
+            let res = document.getElementById('qr-reader-results');
+            let uploadInput = document.getElementById('upload-input');
+            let config = { 
+                qrbox: { 
+                    width: 300, 
+                    height: 280 
+                }, 
+                fps: 10,                // 每秒钟帧数
+                disableFlip: false,     // 禁用镜像翻转
+                disableAutoFit: true,  // 禁用自动适应扫描框大小
+                delay: 100,             // 延迟开始扫码
+                aspectRatio: 1.0,       // 扫码框的长宽比
+                controls: true,         // 显示扫描控制按钮
+                zoom: -1,               // 设置摄像头的缩放级别，默认为-1，表示自动 }; //扫一扫相关设置
+                // videoConstraints: {
+                //     width: { ideal: 1280 },  // 设置摄像头的分辨率
+                //     height: { ideal: 720 },
+                //     frameRate: { ideal: 30 }  // 设置摄像头的帧率
+                // }
+            };
+            //使用本地文件
+            function useLocal() {
+                // readerWarp.style.display = "none";
+                // reader.style.display = "none";
+                res.innerText = "";
+                uploadInput.addEventListener("change", (e) => {
+                    if (e.target.files.length == 0) {
+                        return;
+                    }
+                    const imageFile = e.target.files[0];
+                    html5QrCode
+                        .scanFile(imageFile, true)
+                        .then((decodedText) => {
+                            res.innerText = "扫码成功结果:\n" + decodedText;
+                        })
+                        .catch((error) => {
+                            res.innerText = "扫码失败:\n" + error;
+                        });
+                });
+            }
+    
+           //相机授权
+            function useCamera() {
+                Html5Qrcode.getCameras()
+                    .then((devices) => {
+                        if (devices && devices.length) {
+                            let cameraId = "";
+                            if (devices.length == 1) {
+                                cameraId = devices[0].id; //前置摄像头
+                            } else {
+                                cameraId = devices[1].id;  //后置摄像头
+                            }
+                            if (cameraId) {
+                                startWithCameraId(cameraId);
+                            }
+                        } else {
+                            startWithoutCameraId();
+                        }
+                        readerWarp.style.display = "block";
+                        reader.style.display = "block";
+                        res.innerText = "";
+                    })
+                    .catch((err) => {
+                        layer.msg("没有获取到摄像头设备...",{ anim:1, offset: '100px' });
+                        console.log("没有获取摄像头设备...");
+                    });
+            }
+    
+            //带相机ID扫描
+            function startWithCameraId(cameraId) {
+                html5QrCode
+                    .start(
+                        { deviceId: { exact: cameraId } },
+                        // { facingMode: "environment"  },
+                        config,
+                        onScanSuccess,
+                        onScanFailure
+                    )
+                    .catch((err) => {
+                        console.log("通过摄像头扫码异常....", err);
+                    });
+            }
+    
+            //不带相机ID扫描,允许传递约束来代替相机设备 ID
+            function startWithoutCameraId() {
+                //environment 表示后置摄像头  换成user则表示前置摄像头
+                // html5QrCode.scanFullScreen(
+                //     onScanSuccess,
+                //     onScanFailure,
+                //     function(videoError){
+                //         console.log(videoError);
+                //     }
+                // );
+                html5QrCode.start(
+                    { facingMode: "environment" } || {
+                        facingMode: { exact: "environment" },
+                    },
+                    config,
+                    onScanSuccess,
+                    onScanFailure
+                );
+            }
+            
+            function stopCamera() {
+                 html5QrCode.stop()
+                    .then((ignore) => {
+                      readerWarp.style.display = "none";
+                      reader.style.display = "none";
+                      console.log(html5QrCode);
+                      // QR Code scanning is stopped.
+                      console.log("QR Code scanning stopped.");
+                    })
+                    .catch((err) => {
+                      // Stop failed, handle it.
+                      console.log("Unable to stop scanning.");
+                    });
+            }
+    
+            //扫码解析成功后按照自己的需求做后续的操作
+            function onScanSuccess(decodedText, decodedResult) {
+                stopCamera();
+                document.getElementById('camera-button').innerText = "重新扫码";
+                layer.msg(decodedText, {icon: 6});
+                res.innerText = "扫码成功结果:\n" + decodedText;
+            }
+    
+            //扫码解析失败后按照自己的需求做后续的操作
+            function onScanFailure(error) {
+                res.innerText = "扫码失败:\n" + error;
+            }
+            
+             // 批量事件
+            util.on('lay-on', {
+                useCamera: useCamera,
+                useLocal: useLocal,
+                stopCamera:stopCamera
+            });
+        });
+       
+    </script>
+
+</body>
+
+</html>

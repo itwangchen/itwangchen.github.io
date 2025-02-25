@@ -1,0 +1,327 @@
+body {
+    margin: 0 0;
+    overflow-x: hidden;
+}
+
+#fakeWechatMoment {
+    background-color: #fff;
+    background-color: #010101;
+    color: #fff;
+    display: block;
+    position: fixed;
+    left: 100%;
+    top: 0;
+    padding-bottom: 140px !important;
+    height: auto !important;
+}
+
+.topBar {
+    width: 100%;
+    height: 72px;
+    background-color: #303030;
+    background-color: #111212;
+     background-color: #010101;
+    font-size: 34px;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: Center;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    display: none;
+}
+
+.header {
+    width: 100%;
+    height: 132px;
+    background-color: #303030;
+    background-color: #111212;
+    background-color: #010101;
+    font-size: 48px;
+    color: #fff;
+    display: flex;
+    align-items: Center;
+    
+}
+
+.main {
+    margin: 0 115px 0 45px;
+}
+
+.footer {
+    width: 100%;
+    height: 132px;
+    border-top: 2px solid #d8d8d8;
+    position: relative;
+    display: flex;
+    align-items: Center;
+    justify-content: center;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: #f5f5f5;
+    display: none;
+}
+
+.avatarOut {
+    display: inline-block;
+    background-color: #f1f1f1;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    vertical-align: top;
+}
+
+.avatarIn {
+    position: relative;
+    left: 6px;
+    top: 6px;
+    width: 104px;
+    height: 104px;
+}
+
+.content {
+    position: relative;
+    display: inline-block;
+    /*text-align: justify;*/
+    width: calc(100% - 123px);
+    left: 22px;
+    vertical-align: top;
+}
+
+.name {
+    color: #576b95;
+    font-size: 36px;
+}
+
+.text {
+    font-size: 36px;
+    line-height: 1.25em;
+    text-align: justify;
+}
+
+.article {
+    background-color: #ececec;
+    margin-top: 36px;
+    height: 170px;
+    display: flex;
+    align-items: Center;
+}
+
+.articleIcon {
+    position: relative;
+    left: 16px;
+    width: 138px;
+    height: 138px;
+}
+
+.articleTitle {
+    position: relative;
+    left: 32px;
+    width: calc(100% - 170px);
+    font-size: 36px;
+    max-width: 700px;
+    /* html2canvas不支持文本截断 */
+    /* https://github.com/niklasvh/html2canvas/issues/324 */
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    overflow: hidden;
+}
+
+.singleImage {
+    margin-top: 28px;
+}
+
+.multiImage {
+    margin-top: 28px;
+}
+
+.image {
+    max-width: 750px;
+    max-height: 550px;
+}
+
+.multiImageBox {
+    width: 265px;
+    /*height: 265px;*/
+    margin: 0 8px 8px 0;
+    display: inline-block;
+}
+
+.info {
+    display: inline-block;
+    color: #808080;
+    font-size: 32px;
+    width: calc(100% - 65px);
+    display: none;
+}
+
+.like {
+    width: 100%;
+    background-color: #eee;
+    background-color: #20201f;
+    background-color: #010101;
+    color: #fff;
+    font-size: 0;
+}
+
+.likeAvatarList {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 14px);
+    left: 20px;
+    vertical-align: top;
+}
+
+.likeAvatar {
+    width: 84px;
+    height: 84px;
+    margin: 17px 17px 0 0;
+    display: inline-block;
+}
+
+#generatedPopup {
+    text-align: center;
+}
+
+#generated {
+    width: auto;
+    height: 400px;
+    display: inline-block;
+}
+
+.squareImage {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.emoticon {
+    width: 1.25em;
+    height: 1.25em;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.topBarIcon {
+    height: 36px;
+    width: auto;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#topBarAppIcons{
+    height: 36px;
+    /*visibility: visible;*/
+    display: none;
+}
+
+.commentItem {
+    padding: 22px 0;
+}
+
+.commentName {
+    color: #576b95;
+    font-size: 36px;
+}
+
+.commentTime {
+    color: #808080;
+    font-size: 32px;
+    float: right;
+    display: none;
+    margin-right: 25px;
+}
+
+.commentText {
+    font-size: 36px;
+    line-height: 1.25em;
+    color: #454545;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.commentAvatar {
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+}
+
+.commentInput {
+    border: none;
+    border-bottom: 2px solid #5ec838;
+    font-size: 40px; color: #bbb;
+    width:760px;
+    height: 88px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.commentSend {
+    border: 2px solid #dcdcdc;
+    border-radius: 7px;
+    font-size: 36px;
+    color: #dcdcdc;
+    width: 122px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heimu{
+    background-color: #000;
+    color: #000;
+    transition: color .2s ease;
+}
+.heimu:hover{
+    color: #fff;
+}
+
+.whiteUI #topBarTime {
+    color: #000;
+}
+
+.whiteUI .topBar,
+.whiteUI .header {
+    background-color: #efefef;
+    background-color: #111212;
+     background-color: #010101;
+    color: #181818;
+    color: #fff;
+    text-align: center;
+}
+
+.whiteUI #topBarTime {
+    color: #626262;
+}
+
+.whiteUI .squareImage {
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.whiteUI .avatarOut {
+    background-color: transparent;
+}
+
+.whiteUI .avatarIn {
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.whiteUI .footer {
+    border-top: #bfbfbf;
+    background-color: #f7f7f7;
+}
+
+.whiteUI .commentInput {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+}
