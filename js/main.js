@@ -18,7 +18,7 @@ if (navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1) loadScri
 if (!window.Promise) loadScript('js/polyfill.min.js');
 
 var avatarURL = [];
-xhrGet('avatarURL.json', function (result) { avatarURL = JSON.parse(result) });
+xhrGet('avatarURL.json?v=11', function (result) { avatarURL = JSON.parse(result) });
 var emoticon = [];
 xhrGet('emoticon.json', function (result) {
     emoticon = JSON.parse(result);
