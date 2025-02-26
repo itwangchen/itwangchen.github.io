@@ -450,8 +450,8 @@ document.getElementById('generate').addEventListener('click', function () {
                 avatarSource = avatarURL.concat();
             }
             var avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
-            // avatarUsed = avatarSource[avatarUsedIndex];
-            avatarUsed = (localStorage.getItem('avatar') || 'images/HTB1yE4fMmzqK1RjSZFp761kSXXal.png');
+            avatarUsed = avatarSource[avatarUsedIndex];
+            // avatarUsed = (localStorage.getItem('avatar') || 'images/HTB1yE4fMmzqK1RjSZFp761kSXXal.png');
             avatarSource.splice(avatarUsedIndex, 1);
         }
         var div = document.createElement('div');
@@ -469,7 +469,8 @@ document.getElementById('generate').addEventListener('click', function () {
             var avatarUsedIndex = Math.floor(Math.random() * (avatarSource.length-1));
             console.log(avatarUsedIndex,avatarSource,'-----');
             
-            var avatar = avatarSource[avatarUsedIndex];
+            // var avatar = avatarSource[avatarUsedIndex];
+            var avatar = (localStorage.getItem('avatar') || 'images/HTB1yE4fMmzqK1RjSZFp761kSXXal.png');
             var comment = commentList[i];
             document.getElementById('commentList').innerHTML += ''
                 + '<div class="commentItem">'
