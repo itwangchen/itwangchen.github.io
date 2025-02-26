@@ -158,7 +158,8 @@ function addComment(avatar, name, content, date, reply) {
 var notUsedNames = names.concat();
 function addRandomComment() {
     var randomIndex = Math.floor(Math.random() * notUsedNames.length);
-    document.getElementById('configCommentName').value = notUsedNames[randomIndex];
+    // document.getElementById('configCommentName').value = notUsedNames[randomIndex];
+    document.getElementById('configCommentName').value = configDefault.name;
     notUsedNames.splice(randomIndex, 1);
 }
 
@@ -449,7 +450,8 @@ document.getElementById('generate').addEventListener('click', function () {
                 avatarSource = avatarURL.concat();
             }
             var avatarUsedIndex = Math.floor(Math.random() * avatarSource.length);
-            avatarUsed = avatarSource[avatarUsedIndex];
+            // avatarUsed = avatarSource[avatarUsedIndex];
+            avatarUsed = (localStorage.getItem('avatar') || 'images/HTB1yE4fMmzqK1RjSZFp761kSXXal.png');
             avatarSource.splice(avatarUsedIndex, 1);
         }
         var div = document.createElement('div');
