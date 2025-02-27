@@ -50,7 +50,7 @@ body {
 }
 
 .main {
-    margin: 0 115px 0 45px;
+    margin: 0 115px 0 70px;
 }
 
 .footer {
@@ -89,7 +89,7 @@ body {
     display: inline-block;
     /*text-align: justify;*/
     width: calc(100% - 123px);
-    left: 22px;
+    left: 10px;
     vertical-align: top;
 }
 
@@ -101,7 +101,7 @@ body {
 .text {
     font-size: 34px;
     line-height: 1.25em;
-    text-align: justify;
+    text-align: left;
 }
 
 .article {
@@ -174,7 +174,7 @@ body {
 .likeAvatarList {
     position: relative;
     display: inline-block;
-    width: calc(100% - 14px);
+    width: calc(100% - 60px);
     left: 20px;
     vertical-align: top;
 }
