@@ -94,12 +94,12 @@ body {
 }
 
 .name {
-    color: #576b95;
-    font-size: 36px;
+    color: #ccc;
+    font-size: 32px;
 }
 
 .text {
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.25em;
     text-align: justify;
 }
@@ -226,7 +226,7 @@ body {
 }
 
 .commentName {
-    color: #fff;
+    color: #ccc;
     font-size: 32px;
 }
 
@@ -239,9 +239,9 @@ body {
 }
 
 .commentText {
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.25em;
-    color: #454545;
+/*     color: #454545; */
     color: #fff;
     margin-top: 15px;
 }
@@ -316,8 +316,8 @@ body {
 .whiteUI .avatarIn {
     left: 0;
     top: 0;
-    width: 100px;
-    height: 100px;
+    width: 95px;
+    height: 95px;
 }
 
 .whiteUI .footer {
