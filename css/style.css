@@ -95,11 +95,11 @@ body {
 
 .name {
     color: #ccc;
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .text {
-    font-size: 32px;
+    font-size: 34px;
     line-height: 1.25em;
     text-align: justify;
 }
@@ -155,7 +155,7 @@ body {
 .info {
     display: inline-block;
     color: #808080;
-    font-size: 32px;
+    font-size: 34px;
     width: calc(100% - 65px);
     display: none;
 }
@@ -227,7 +227,7 @@ body {
 
 .commentName {
     color: #ccc;
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .commentTime {
@@ -239,7 +239,7 @@ body {
 }
 
 .commentText {
-    font-size: 32px;
+    font-size: 34px;
     line-height: 1.25em;
 /*     color: #454545; */
     color: #fff;
