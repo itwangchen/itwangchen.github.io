@@ -4,8 +4,9 @@ body {
 }
 
 #fakeWechatMoment {
-    background-color: #fff;
-    background-color: #010101;
+    /* background-color: #fff; */
+    /* background-color: #010101; */
+    /* background-color: rgba(255, 255, 255, 0.5); */
     color: #fff;
     display: block;
     position: fixed;
@@ -18,9 +19,10 @@ body {
 .topBar {
     width: 100%;
     height: 72px;
-    background-color: #303030;
+    /* background-color: #303030;
     background-color: #111212;
-     background-color: #010101;
+     background-color: #010101; */
+     /* background-color: rgba(255, 255, 255, 0.5); */
     font-size: 34px;
     font-weight: 500;
     color: #fff;
@@ -36,9 +38,10 @@ body {
 .header {
     width: 100%;
     height: 132px;
-    background-color: #303030;
+    /* background-color: #303030;
     background-color: #111212;
-    background-color: #010101;
+    background-color: #010101; */
+    /* background-color: rgba(255, 255, 255, 0.5); */
     font-size: 48px;
     color: #fff;
     display: flex;
@@ -159,9 +162,10 @@ body {
 
 .like {
     width: 100%;
-    background-color: #eee;
+    /* background-color: #eee;
     background-color: #20201f;
-    background-color: #010101;
+    background-color: #010101; */
+    /* background-color: rgba(255, 255, 255, 0.5); */
     color: #fff;
     font-size: 0;
 }
@@ -287,9 +291,10 @@ body {
 
 .whiteUI .topBar,
 .whiteUI .header {
-    background-color: #efefef;
-    background-color: #111212;
-     background-color: #010101;
+    /* background-color: #efefef;
+    background-color: #111212; */
+     /* background-color: #010101; */
+     /* background-color: rgba(255, 255, 255, 0.5); */
     color: #181818;
     color: #fff;
     text-align: center;
@@ -305,7 +310,7 @@ body {
 }
 
 .whiteUI .avatarOut {
-    background-color: transparent;
+    /* background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .whiteUI .avatarIn {

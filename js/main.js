@@ -513,10 +513,11 @@ document.getElementById('generate').addEventListener('click', function () {
     (
         html2canvas(document.getElementById('fakeWechatMoment'), {
             useCORS: true,
+            backgroundColor: null,
             scale: 1,
         })
     ).then(function (canvas) {
-        var dURL = canvas.toDataURL();
+        var dURL = canvas.toDataURL('image/png');
         document.getElementById('generated').src = dURL;
         document.getElementById('save').setAttribute('href', dURL);
         document.getElementById('save').setAttribute('download', (+new Date) + '.png');
