@@ -143,6 +143,7 @@ body {
 .image {
     max-width: 750px;
     max-height: 550px;
+    border-radius: 14px;
 }
 
 .multiImageBox {
